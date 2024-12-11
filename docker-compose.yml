@@ -1,0 +1,32 @@
+version: '3.8'
+
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    restart: always
+    ports:
+      - "3010:3010"
+    environment:
+      - NODE_ENV=production
+      - PORT=3010
+      - DB_URL=file:/app/data/local.db
+      - VITE_API_URL=http://localhost:3010/api
+    volumes:
+      - app_data:/app/data
+    networks:
+      - app_network
+    healthcheck:
+      test: ["CMD", "wget", "--spider", "http://localhost:3010"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+
+networks:
+  app_network:
+    driver: bridge
+
+volumes:
+  app_data:
+    driver: local

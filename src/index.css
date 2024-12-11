@@ -1,0 +1,50 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --color-primary: #2563eb;
+  --color-secondary: #1e40af;
+  --color-accent: #3b82f6;
+  --color-header-bg: #1e3a8a;
+  --color-sidebar-bg: #1e2124;
+  --color-text-primary: #111827;
+  --color-text-secondary: #4b5563;
+}
+
+@layer base {
+  body {
+    @apply antialiased text-gray-800;
+  }
+}
+
+@layer components {
+  .btn {
+    @apply px-4 py-2 rounded-lg font-medium transition-colors;
+  }
+
+  .btn-primary {
+    @apply bg-[var(--color-primary)] text-white hover:brightness-110;
+  }
+
+  .btn-secondary {
+    @apply bg-gray-100 text-gray-700 hover:bg-gray-200;
+  }
+}
+
+/* Aplicar colores dinámicos */
+.bg-header {
+  background-color: var(--color-header-bg);
+}
+
+.bg-sidebar {
+  background-color: var(--color-sidebar-bg);
+}
+
+.text-primary {
+  color: var(--color-text-primary);
+}
+
+.text-secondary {
+  color: var(--color-text-secondary);
+}
